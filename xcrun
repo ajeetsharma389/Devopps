@@ -1,0 +1,41 @@
+#!/bin/bash
+
+SDKS_DIR=/opt/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs
+SDK_DIR=$SDKS_DIR/iPhoneOS-8.1.sdk
+SDK_NAME=iphoneos # Currently unused - could use this to select $SDK_DIR.
+JUST_FIND_TOOL=false
+
+while [ $# -gt 0 ]; do
+	case "$1" in
+		"--sdk")
+			SDK_NAME=$2
+			shift
+			;;
+
+		"--find"|"-f")
+			JUST_FIND_TOOL=true
+			;;
+
+		"-r"|"--run"|"-v"|"--verbose"|"-n"|"--no-cache"|"-k"|"--kill-cache"|"-l"|"--log")
+			# Ignore. These options aren't supported but this shouldn't be fatal.
+			;;
+
+		"--toolchain")
+			# Not supported.
+			echo "Unsupported option: $1"
+			exit 1
+
+		*)
+			break
+			;;
+	esac
+	shift
+done
+
+if [ "$JUST_FIND_TOOL" == "true" ]; then
+	which $1
+else
+	$*
+fi
+
+exit $?
