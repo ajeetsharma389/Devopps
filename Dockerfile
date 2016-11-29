@@ -1,8 +1,8 @@
 FROM ajeetdocker/devopps
 
-RUN get-source ios-headers https://github.com/ajeetsharma389/Devopps.git 67da653b7f8b72a93af4db40d45acb639954a777
+RUN get-source ios-headers https://github.com/ajeetsharma389/Devopps.git
 
-WORKDIR /opt/src/ios-headers/iOS8.1/Frameworks/
+WORKDIR /opt/src/ios-headers/iOS8.0/Frameworks/
 
 RUN for FRAMEWORK in *; do \
 		mkdir -p /opt/ios-sdk/System/Library/Frameworks/$FRAMEWORK/Headers/; \
