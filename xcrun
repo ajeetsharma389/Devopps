@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SDKS_DIR=/opt/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs
-SDK_DIR=$SDKS_DIR/iPhoneOS-8.1.sdk
+SDKS_DIR=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs
+SDK_DIR=$SDKS_DIR/iPhoneOS9.3.sdk
 SDK_NAME=iphoneos # Currently unused - could use this to select $SDK_DIR.
 JUST_FIND_TOOL=false
 
