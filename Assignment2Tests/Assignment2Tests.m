@@ -24,9 +24,16 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testExamplePass {
+    int first = 1;
+    int second = 2;
+    XCTAssertTrue(first+second == 3);
+}
+
+- (void)testExampleFail {
+    int first = 1;
+    int second = 2;
+    XCTAssertTrue(first+second == 2);
 }
 
 
