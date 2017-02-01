@@ -33,7 +33,7 @@
 - (void)testExampleFail {
     int first = 1;
     int second = 2;
-    XCTAssertTrue(first+second == 2);
+    XCTAssertTrue(first+second == 3);
 }
 
 
