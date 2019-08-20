@@ -13,7 +13,11 @@ pipeline {
         
             post{
                 success{
-                    echo "Now Archiving"
+                   
+                    timeout(time:5, unit:'DAYS'){
+                        input message: 'Approve?'
+                    }
+                     echo "Now Archiving"
                     //archiveArtifacts artifacts:"**/*.jar"
                 }
             }
