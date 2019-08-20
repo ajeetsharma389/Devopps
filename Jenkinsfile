@@ -3,9 +3,10 @@ pipeline {
     stages{
         stage('Build'){
             steps{
-                echo "Now cloning"
+                echo "Now cleaning workspace"
                 cleanWs()
-                //checkout scm
+                echo "Now cloning code"
+                checkout scm
                 //git url: 'https://github.com/ajeetsharma389/Jenkins.git', branch: 'master'
                 //sh 'mvn clean package'
             }
