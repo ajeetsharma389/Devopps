@@ -5,7 +5,7 @@ pipeline {
             steps{
                 echo "Now cloning"
                 cleanWs()
-                checkout scm
+                //checkout scm
                 //git url: 'https://github.com/ajeetsharma389/Jenkins.git', branch: 'master'
                 //sh 'mvn clean package'
             }
