@@ -13,7 +13,8 @@ pipeline {
         
             post{
                 success{
-                   
+                   // this is used to get input from submitted/invoker to approve the job or not.
+                    // time: means it will wait for 5 days
                     timeout(time:5, unit:'DAYS'){
                         input message: 'Approve?'
                     }
