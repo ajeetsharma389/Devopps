@@ -1,12 +1,17 @@
 pipeline {
     agent any
+    environment {
+        USER = 'AjeetSharma'
+    
+    }
     stages{
         stage('Build'){
             steps{
-                echo "Now cleaning workspace"
+                echo "Now cleaning workspace!"
                 cleanWs()
-                echo "Now cloning code"
-                checkout scm
+                echo "Now cloning code $USER"
+                
+               // checkout scm
                 //git url: 'https://github.com/ajeetsharma389/Jenkins.git', branch: 'master'
                 //sh 'mvn clean package'
             }
@@ -20,6 +25,17 @@ pipeline {
                     }
                      echo "Now Archiving"
                     //archiveArtifacts artifacts:"**/*.jar"
+                }
+            }
+        }
+        stage("Interactive_Input") {
+            steps {
+                script {
+                def userPasswordInput = input(
+        id: 'Password', message: 'input your password: ', ok: 'ok', parameters: [string(defaultValue: 'master', description: '.....', name: 'LIB_TEST')]
+    )
+                echo ("Password was: " + userPasswordInput)
+
                 }
             }
         }
