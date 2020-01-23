@@ -8,8 +8,8 @@ pipeline {
         stage('Build'){
             steps{
                 echo "Now cleaning workspace!"
-                def branch = env.BRANCH_NAME
-                sh 'echo $BRANCH_NAME'
+                //def branch = env.BRANCH_NAME
+               	echo env.BRANCH_NAME
                 cleanWs()
                 echo "Now cloning code $USER"
                 
