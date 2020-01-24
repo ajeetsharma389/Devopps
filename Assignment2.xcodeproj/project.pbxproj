@@ -62,6 +62,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0271C76523DAB52900D8099E /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
 		02DB8D161D6322FD00FA04B0 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +94,7 @@
 				02DB8D261D6322FD00FA04B0 /* AppDelegate.m */,
 				02DB8D281D6322FD00FA04B0 /* ViewController.h */,
 				02DB8D291D6322FD00FA04B0 /* ViewController.m */,
+				0271C76523DAB52900D8099E /* Asset */,
 				02DB8D2B1D6322FD00FA04B0 /* Main.storyboard */,
 				02DB8D311D6322FD00FA04B0 /* Assets.xcassets */,
 				02DB8D331D6322FD00FA04B0 /* LaunchScreen.storyboard */,
@@ -178,6 +186,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
