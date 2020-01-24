@@ -7,10 +7,31 @@ pipeline {
     stages{
         stage('Build'){
             steps{
-                echo "Now cleaning workspace!"
+                echo "Clone base branch"
+		checkout scm
+
                 def branch = env.BRANCH_NAME
                 sh 'echo $BRANCH_NAME'
-                cleanWs()
+
+		///// switch to  respective branch
+		//git clone --single-branch --branch $BRANCH_NAME <remote-repo>
+		git checkout $BRANCH_NAME 
+
+		/// print current branch name after switch
+		git branch
+
+		/// get the filenames from modified branch
+		last_commit=$(git rev-parse HEAD)
+		echo "last commit id "+$last_commit
+		last_before_commit=$(git rev-parse HEAD~1)
+		echo "last before commit id "+$last_before_commit
+		/// print the list of files modified
+	
+		git diff --name-only last_commit last_before_commit
+		
+		sh $git diff --name-only last_commit last_before_commit 
+
+                //cleanWs()
                 echo "Now cloning code $USER"
                 
                // checkout scm
@@ -18,28 +39,9 @@ pipeline {
                 //sh 'mvn clean package'
             }
         
-            post{
-                success{
-                   // this is used to get input from submitted/invoker to approve the job or not.
-                    // time: means it will wait for 5 days
-                    timeout(time:5, unit:'DAYS'){
-                        input message: 'Approve?'
-                    }
-                     echo "Now Archiving"
-                    //archiveArtifacts artifacts:"**/*.jar"
-                }
-            }
+            
         }
-        stage("Interactive_Input") {
-            steps {
-                script {
-                def userPasswordInput = input(
-        id: 'Password', message: 'input your password: ', ok: 'ok', parameters: [string(defaultValue: 'master', description: '.....', name: 'LIB_TEST')]
-    )
-                echo ("Password was: " + userPasswordInput)
-
-                }
-            }
+        
         }
     }
 }
